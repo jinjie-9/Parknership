@@ -1,0 +1,26 @@
+{
+  "name": "my-nextjs-app",
+  "version": "1.0.0",
+  "description": "A cafe website showcasing a menu of beverages including coffee and tea.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "cafe",
+    "menu",
+    "beverages",
+    "coffee",
+    "tea"
+  ],
+  "author": "",
+  "license": "MIT"
+}
