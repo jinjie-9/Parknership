@@ -41,11 +41,11 @@ export default function Cart() {
   };
 
   const totalAmount = cart
-    .reduce((total, item) => total + parseFloat(item.price) * item.quantity, 0)
+    .reduce((total, item) => total + parseFloat(item.price) , 0)
     .toFixed(2);
 
   const totalOrderHistoryAmount = orderHistory
-    .reduce((total, item) => total + parseFloat(item.price) * item.quantity, 0)
+    .reduce((total, item) => total + parseFloat(item.price) , 0)
     .toFixed(2);
 
   const handleCheckout = () => {
@@ -60,12 +60,13 @@ export default function Cart() {
 
   const handleEdit = (index) => {
     setEditIndex(index);
+    const item = cart[index];
     setEditItem({
-      name: cart[index].name,
-      price: cart[index].price,
-      quantity: cart[index].quantity,
-      temperature: cart[index].temperature,
-      remarks: cart[index].remarks,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      temperature: item.type === "dessert" ? "" : item.temperature,
+      remarks: item.remarks,
     });
   };
 
@@ -114,6 +115,52 @@ export default function Cart() {
         </button>
       </header>
 
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-50 z-10 transition-transform transform ${
+          isNavOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        onClick={() => setIsNavOpen(false)} // Close sidebar when clicking outside
+      >
+        <nav
+          className={`fixed right-0 top-0 h-full w-64 bg-green-700 text-white shadow-lg flex flex-col items-center justify-center transition-transform transform ${
+            isNavOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the sidebar
+        >
+          {/* Close Button */}
+          <button
+            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full"
+            onClick={() => setIsNavOpen(false)}
+          >
+            ✖
+          </button>
+          <Link href="/" legacyBehavior>
+            <a
+              className="px-4 py-2 rounded hover:bg-white hover:text-black transition duration-300 mb-4"
+              onClick={() => setIsNavOpen(false)} // Close sidebar on navigation
+            >
+              Home
+            </a>
+          </Link>
+          <Link href="/menu" legacyBehavior>
+            <a
+              className="px-4 py-2 rounded hover:bg-white hover:text-black transition duration-300 mb-4"
+              onClick={() => setIsNavOpen(false)} // Close sidebar on navigation
+            >
+              Menu
+            </a>
+          </Link>
+          <Link href="/cart" legacyBehavior>
+            <a
+              className="px-4 py-2 rounded hover:bg-white hover:text-black transition duration-300"
+              onClick={() => setIsNavOpen(false)} // Close sidebar on navigation
+            >
+              Cart
+            </a>
+          </Link>
+        </nav>
+      </div>
+
       <div className="flex flex-col md:flex-row justify-between items-start w-full mt-8 gap-8">
         <div className="w-full md:w-1/2">
           <header className="text-center">
@@ -142,17 +189,19 @@ export default function Cart() {
                             min="1"
                           />
                         </div>
-                        <div className="flex flex-col gap-2">
-                          <label className="text-green-800 font-bold">Temperature:</label>
-                          <select
-                            className="p-2 border text-black border-green-700 rounded"
-                            value={editItem.temperature}
-                            onChange={(e) => setEditItem({ ...editItem, temperature: e.target.value })}
-                          >
-                            <option value="Hot">Hot</option>
-                            <option value="Cold">Cold</option>
-                          </select>
-                        </div>
+                        {item.type !== "dessert" && (
+                          <div className="flex flex-col gap-2">
+                            <label className="text-green-800 font-bold">Temperature:</label>
+                            <select
+                              className="p-2 border text-black border-green-700 rounded"
+                              value={editItem.temperature}
+                              onChange={(e) => setEditItem({ ...editItem, temperature: e.target.value })}
+                            >
+                              <option value="Hot">Hot</option>
+                              <option value="Cold">Cold</option>
+                            </select>
+                          </div>
+                        )}
                         <div className="flex flex-col gap-2">
                           <label className="text-green-800 font-bold">Remarks:</label>
                           <textarea
@@ -184,7 +233,7 @@ export default function Cart() {
                           <h3 className="text-xl font-bold text-green-800">{item.name}</h3>
                           <p className="text-green-700">Price: {item.price}</p>
                           <p className="text-green-700">Quantity: {item.quantity}</p>
-                          <p className="text-green-700">Temperature: {item.temperature}</p>
+                          {item.type !== "dessert" && (<p className="text-green-700">Temperature: {item.temperature}</p>)}
                           <p className="text-green-700">Remarks: {item.remarks || "No remarks"}</p>
                         </div>
                         {editIndex !== index && (
@@ -247,7 +296,9 @@ export default function Cart() {
                       <h3 className="text-xl font-bold text-green-800">{item.name}</h3>
                       <p className="text-green-700">Price: {item.price}</p>
                       <p className="text-green-700">Quantity: {item.quantity}</p>
-                      <p className="text-green-700">Temperature: {item.temperature}</p>
+                      {item.type !== "dessert" && (
+                        <p className="text-green-700">Temperature: {item.temperature}</p>
+                      )}
                       <p className="text-green-700">Remarks: {item.remarks || "No remarks"}</p>
                     </div>
                   </div>
