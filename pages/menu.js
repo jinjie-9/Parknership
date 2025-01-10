@@ -279,7 +279,7 @@ export default function Home() {
       <main className="flex flex-col gap-8 w-full max-w-5xl">
         <h2 className="text-4xl font-bold text-green-800 mb-4 mt-8">~ Menu ~</h2>
         {/* Filters */}
-        <div className="flex gap-4 mb-6">
+        <div className="flex flex-wrap gap-4 mb-6 justify-center">
           <button
             className={`px-6 py-2 rounded-lg ${
               selectedType === "all"
@@ -288,7 +288,7 @@ export default function Home() {
             } transition`}
             onClick={() => setSelectedType("all")}
           >
-            All
+            All Beverages
           </button>
           <button
             className={`px-6 py-2 rounded-lg ${
