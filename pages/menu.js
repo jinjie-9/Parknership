@@ -17,21 +17,21 @@ const beverages = [
   {
     name: "Cedar Espresso",
     description: " A bold and aromatic shot of espresso.",
-    price: "4.25 SGD",
+    price: "6.20 SGD",
     image: "/Cedar Espresso.jpg",
     type: "coffee",
   },
   {
     name: "Rosebud Cappuccino",
     description: "A cappuccino with rosewater or rose petals.",
-    price: "4.50 SGD",
+    price: "6.50 SGD",
     image: "/Rosebud Cappuccino.jpg",
     type: "coffee",
   },
   {
     name: "Lavender Latte",
     description: "Infused with calming lavender syrup.",
-    price: "4.50 SGD",
+    price: "6.50 SGD",
     image: "/Lavender Latte.jpg",
     type: "coffee",
   },
@@ -101,7 +101,7 @@ const beverages = [
   {
     name: "Orchard Spark",
     description: "Sweet apple soda with a hint of honey.",
-    price: "4.20 SGD",
+    price: "6.20 SGD",
     image: "/Orchard Spark.jpg",
     type: "non-coffee",
   },
@@ -288,7 +288,7 @@ export default function Home() {
             } transition`}
             onClick={() => setSelectedType("all")}
           >
-            All Beverages
+            All Menu Item
           </button>
           <button
             className={`px-6 py-2 rounded-lg ${
