@@ -78,7 +78,7 @@ export default function Homepage() {
       <main className="flex flex-col items-center mt-8 w-full">
         <h2 className="text-4xl font-bold text-green-800 mb-4">Welcome to Parknership Cafe</h2>
         <p className="text-lg text-green-700 mb-8 text-center">
-          Enjoy our selection of freshly brewed coffee and tea. We offer a variety of beverages to suit your taste.
+          Enjoy our selection of freshly brewed coffee and tea. We offer a variety of beverages and dessert to suit your taste.
         </p>
         <Image src="/Logo.png" alt="Cafe" width={600} height={400} className="rounded-lg shadow-lg mb-8" />
         <Link href="/menu" legacyBehavior>
@@ -89,7 +89,7 @@ export default function Homepage() {
       </main>
 
       <footer className="mt-12 text-center text-green-600">
-        <p className="text-sm">© 2023 Parknership. All rights reserved.</p>
+        <p className="text-sm">© 2025 Parknership. All rights reserved.</p>
       </footer>
     </div>
   );

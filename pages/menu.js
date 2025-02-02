@@ -406,8 +406,8 @@ export default function Home() {
                       setNewItem({ ...newItem, temperature: e.target.value })
                     }
                   >
-                    <option value="Hot">Hot</option>
-                    <option value="Cold">Cold</option>
+                    <option value="Hot">Hot (Original Price)</option>
+                    <option value="Cold">Cold (+ $0.50)</option>
                   </select>
                 </div>
               )}
